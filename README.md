@@ -13,7 +13,7 @@ A API utiliza JWT para atenticação do usuário após realizar o cadastro<br/>
 <br/>
 Tecnologias que devem ser usadas<br/>
 * Java 8
-* Spring Boot
+* Spring Boot 2.4.3
 * PostgreSql 9
 
 ## Endpoint Login:<br/>
