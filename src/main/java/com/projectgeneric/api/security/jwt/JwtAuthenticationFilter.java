@@ -60,7 +60,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String jwtToken = JwtUtil.createToken(user);
 
-//        String json = ServletUtil.getJson("token", jwtToken);
         user.setSenha(null);
         String json = UsuarioDTO.create(user, jwtToken).toJson();
         ServletUtil.write(response, HttpStatus.OK, json);

@@ -19,9 +19,6 @@ import static java.util.Objects.nonNull;
 
 public class JwtUtil {
 
-    // Chave com algoritmo HS512
-    // http://www.allkeysgenerator.com
-//  private static final String JWT_SECRET = "n2r5u8x/A%D*G-KaPdSgVkYp3s6v9y$B&E(H+MbQeThWmZq4t7w!z%C*F-J@NcRf";
     private static final String JWT_SECRET = "+KbPeShVmYq3t6v9y$B&E)H@McQfTjWnZr4u7x!z%C*F-JaNdRgUkXp2s5v8y/B?";
 
     public static Claims getClaims(String token) {
@@ -76,11 +73,8 @@ public class JwtUtil {
 
         byte[] signingKey = JwtUtil.JWT_SECRET.getBytes();
 
-//        int days = 10;
-//        long time = days * 24 /*horas*/ * 60 /*min*/ * 60 /*seg*/ * 1000 /*milis*/;
         long time = 60 /*min*/ * 60 /*seg*/ * 1000 /*milis*/;
         Date expiration = new Date(System.currentTimeMillis() + time);
-//        System.out.println(expiration);
 
         return Jwts.builder()
                 .signWith(Keys.hmacShaKeyFor(signingKey), SignatureAlgorithm.HS512)

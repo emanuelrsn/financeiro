@@ -45,24 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/v1/login").permitAll()
-
-
-//                //REMOVER QUANDO IMPLMENTAR NO PROJETO LOGIN
-//                .antMatchers(HttpMethod.POST, "/api/v1/categoria*/**").permitAll()
-//                .antMatchers(HttpMethod.PUT, "/api/v1/categoria").permitAll()
-//                .antMatchers(HttpMethod.PUT, "/api/v1/categoria*/**").permitAll()
-//                .antMatchers(HttpMethod.GET, "/api/v1/categoria*/**").permitAll()
-//                .antMatchers(HttpMethod.DELETE, "/api/v1/categoria*/**").permitAll()
-//
-//                //REMOVER QUANDO IMPLMENTAR NO PROJETO LOGIN
-//                 .antMatchers(HttpMethod.POST, "/api/v1/entrada*/**").permitAll()
-//                .antMatchers(HttpMethod.PUT, "/api/v1/entrada").permitAll()
-//                .antMatchers(HttpMethod.PUT, "/api/v1/entrada*/**").permitAll()
-//                .antMatchers(HttpMethod.GET, "/api/v1/entrada*/**").permitAll()
-//                .antMatchers(HttpMethod.DELETE, "/api/v1/entrada*/**").permitAll()
-                
-                
+                .antMatchers(HttpMethod.GET, "/api/v1/login").permitAll()              .antMatchers(HttpMethod.DELETE, "/api/v1/entrada*/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/usuario").permitAll()
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
                 .permitAll()
@@ -82,30 +65,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         auth.userDetailsService(userDetailservice).passwordEncoder(encoder);
+    }
 
-//        auth
-//                .inMemoryAuthentication().passwordEncoder(encoder)
-//                .withUser("user").password(encoder.encode("user")).roles("USER")
-//                .and()
-//                .withUser("admin").password(encoder.encode("admin")).roles("USER", "ADMIN");
-    }
-    
-    /*
-    
-    Caso queria usar o fitro do CORS para habilitar por URL
-    @Bean
-    public FilterRegistrationBean processCorsFilter() {
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        final CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:4200");
-        config.addAllowedOrigin("http://localhost:4201");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        final FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-        bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        return bean;
-    }
-*/
 }
